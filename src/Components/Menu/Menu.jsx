@@ -1,23 +1,14 @@
 import { useEffect, useState } from "react";
 import Section from "../HomePage/Section/Section";
 import MenuItem from "../HomePage/MenuItem/MenuItem";
+import useMenu from "../../Hooks/useMenu";
+
 
 
 
 const Menu = () => {
-    const [menu, setMenu] = useState([])
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                setMenu(data)
-                // const popularItems = data.filter(item => item.category === 'popular')
-                // setMenu(popularItems)
-            })
-
-    }, [])
-
-    const sixData = menu?.slice(0, 6)
+    const [menu] =useMenu()
+    const popular = menu.filter(item => item.category === 'popular')
 
     return (
         <div>
@@ -28,11 +19,11 @@ const Menu = () => {
             </div>
             <div className="grid lg:grid-cols-2 gap-7 mb-16 md:grid-cols-2 grid-cols-1">
                 {
-                    sixData.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
+                    popular?.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
                 }
 
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mb-10">
              <button className="uppercase flex item-center btn btn-outline border-0 border-b-4  text-xl font-inter">View all menu</button>
             </div>
         </div>
