@@ -5,7 +5,7 @@ const ShopCard = ({ item }) => {
     return (
         <div>
 
-            <div className="card card-compact w-96 mb-10 mt-10 bg-base-100 shadow-xl">
+            <div className="card card-compact lg:h-[450px] w-96 mb-10 mt-10 bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Shoes" /></figure>
 
                 <p className="absolute right-0 p-1 mr-4 mt-4 bg-slate-900 text-white">${price}</p>
